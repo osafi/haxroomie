@@ -47,7 +47,6 @@ RUN UBUNTU_FRONTEND=noninteractive \
 RUN npm install haxroomie-cli -g
 
 COPY root/ /
-
 CMD ["/bootstrap.sh"]
 
 HEALTHCHECK --interval=5s --timeout=2s --retries=20 CMD /healthcheck.sh || exit 1
