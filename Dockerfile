@@ -1,9 +1,9 @@
-FROM ubuntu:18.04
+FROM node:lts-stretch
 
 RUN UBUNTU_FRONTEND=noninteractive \
   apt-get update && \
   apt-get -y install \
-    npm \
+    git \
     gconf-service \
     libasound2 \
     libatk1.0-0 \
@@ -44,10 +44,16 @@ RUN UBUNTU_FRONTEND=noninteractive \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-RUN npm install haxroomie-cli -g
+RUN yarn global add haxroomie-cli
+
+RUN git clone https://github.com/osafi/route-director.git && \
+    cd route-director && \
+    yarn install && \
+    yarn build
 
 COPY root/ /
 CMD ["/bootstrap.sh"]
+EXPOSE 8080
 
 HEALTHCHECK --interval=5s --timeout=2s --retries=20 CMD /healthcheck.sh || exit 1
 

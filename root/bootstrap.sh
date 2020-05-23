@@ -6,4 +6,6 @@ if [ ! -f /root/.haxroomie/config.js ]; then
   echo "$HAXROOMIE_CONFIG" > /root/.haxroomie/config.js
 fi
 
-haxroomie-cli --no-sandbox
+yarn --cwd /route-director start &
+
+haxroomie-cli --no-sandbox --disable-web-security
