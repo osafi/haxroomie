@@ -39,7 +39,7 @@ let config = {
       },
       'hr/kickban': {},
       'osafi/register-route': {
-        directorRegistrationUrl: 'http://localhost:8080/routes',
+        directorRegistrationUrl: `http://localhost:${process.env.PORT || '8080'}/routes`,
         route: process.env.ROOM_NAME ? `/${process.env.ROOM_NAME}` : '/haxball',
         username: process.env.ROUTE_DIRECTOR_USER || 'admin',
         password: process.env.ROUTE_DIRECTOR_PASS || 'admin123',
