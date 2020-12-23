@@ -1,8 +1,7 @@
 #!/bin/bash
 
 rm -f /tmp/haxroomie.lock
-mkdir -p /root/.haxroomie
-if [ ! -f /root/.haxroomie/config.js ]; then
+if [ ! -z "$HAXROOMIE_CONFIG" ]; then
   echo "$HAXROOMIE_CONFIG" > /root/.haxroomie/config.js
 fi
 

@@ -51,9 +51,8 @@ RUN git clone https://github.com/osafi/route-director.git && \
     yarn install && \
     yarn build
 
-COPY root/ /
-CMD ["/bootstrap.sh"]
+COPY entrypoint.sh healthcheck.sh /
+COPY config.js /root/.haxroomie/config.js
 EXPOSE 8080
-
+CMD ["/entrypoint.sh"]
 HEALTHCHECK --interval=5s --timeout=2s --retries=20 CMD /healthcheck.sh || exit 1
-

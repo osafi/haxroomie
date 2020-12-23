@@ -6,11 +6,6 @@ let config = {
     maxPlayers: 20,
     password: process.env.ROOM_PASSWORD || 'haxball',
     token: process.env.HAXBALL_TOKEN,
-    geo: {
-      code: 'US',
-      lat: '47.6129432',
-      lon: '-122.4821461'
-    },
     public: false,
     repositories: [
       {
