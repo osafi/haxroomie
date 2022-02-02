@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 rm -f /tmp/haxroomie.lock
 if [ ! -z "$HAXROOMIE_CONFIG" ]; then
@@ -7,4 +7,4 @@ fi
 
 yarn --cwd /route-director start &
 
-haxroomie-cli --no-sandbox --disable-web-security --timeout=120
+haxroomie-cli --no-sandbox --disable-web-security --timeout=120 --chromium-args="--headless --disable-gpu --enable-logging"
