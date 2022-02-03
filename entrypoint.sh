@@ -7,4 +7,4 @@ fi
 
 yarn --cwd /route-director start &
 
-haxroomie-cli --no-sandbox --disable-web-security --timeout=120 --chromium-args="--headless --disable-gpu --enable-logging"
+haxroomie-cli --no-sandbox --disable-web-security --timeout=120

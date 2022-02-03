@@ -27,9 +27,9 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
 RUN yarn global add haxroomie-cli && \
     mkdir -p /root/.haxroomie/user-data-dir
 
-COPY entrypoint.sh healthcheck.sh /
+COPY entrypoint.sh /
 COPY config.js /root/.haxroomie/config.js
 
 EXPOSE 8080
 CMD ["/entrypoint.sh"]
-HEALTHCHECK --interval=5s --timeout=2s --retries=20 CMD /healthcheck.sh || exit 1
+HEALTHCHECK --interval=1s --timeout=3s --retries=20 CMD wget --no-verbose --tries=1 --spider 'http://localhost:3066' || exit 1
