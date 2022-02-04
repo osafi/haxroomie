@@ -30,4 +30,4 @@ jobs:
           context: .
           file: ${{ matrix.base }}/Dockerfile
           push: true
-          tags: ${{ github.event.release.tag_name }}-${{ matrix.base }}
+          tags: ${{ github.repository }}:${{ github.event.release.tag_name }}-${{ matrix.base }}
