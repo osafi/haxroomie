@@ -11,21 +11,19 @@ RUN apk add --no-cache \
       nodejs \
       yarn
 
-# Prepare route-director
-RUN wget https://github.com/osafi/route-director/archive/refs/heads/master.zip && \
+# Configure chrome executable for puppeteer
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+
+RUN yarn global add haxroomie-cli@2.6.2 && \
+    # setup route-director service
+    wget https://github.com/osafi/route-director/archive/refs/heads/master.zip && \
     unzip master.zip && \
     mv route-director-master route-director &&\
     rm -rf master.zip && \
     cd route-director && \
     yarn install && \
     yarn build
-
-# Configure chrome executable for puppeteer
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
-    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
-
-RUN yarn global add haxroomie-cli && \
-    mkdir -p /root/.haxroomie/user-data-dir
 
 COPY entrypoint.sh /
 COPY config.js /root/.haxroomie/config.js

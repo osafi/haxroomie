@@ -12,8 +12,7 @@ RUN apt-get update && \
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
     PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
 
-RUN yarn global add haxroomie-cli && \
-    mkdir -p /root/.haxroomie/user-data-dir && \
+RUN yarn global add haxroomie-cli@2.6.2 && \
     # setup route-director service
     wget https://github.com/osafi/route-director/archive/refs/heads/master.zip && \
     unzip master.zip && \
